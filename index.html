@@ -4,23 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Virtual Health Assistant</title>
+
   <style>
-    body {  
-      font-family: 'Segoe UI', sans-serif;  
-      margin: 0;  
-      padding: 0;  
-      background-color: #f0f4f7;  
-      color: #333;  
-      background-size: cover;  
-      background-position: center center;  
-      background-attachment: fixed;  
-      transition: background-color 0.3s, color 0.3s;
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f4f7;
+      color: #333;
+      transition: 0.3s;
     }
 
     header {
-      background-color: rgba(0, 68, 102, 0.9); 
+      background-color: rgba(0, 68, 102, 0.9);
       color: white;
-      padding: 20px;
+      padding: 15px;
       text-align: center;
       border-bottom: 5px solid #007acc;
       display: flex;
@@ -28,13 +26,9 @@
       align-items: center;
     }
 
-    header h1, header p {
-      margin: 0;
-    }
-
     main {
-      padding: 20px;
-      max-width: 800px;
+      padding: 15px;
+      max-width: 850px;
       margin: auto;
     }
 
@@ -44,37 +38,31 @@
       margin-bottom: 20px;
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      transition: background-color 0.3s, color 0.3s;
     }
 
     textarea, input, select {
-      width: 95%;
-      padding: 10px;
+      width: 100%;
+      padding: 12px;
       margin-top: 10px;
       border-radius: 6px;
       border: 1px solid #ccc;
+      font-size: 16px;
+      box-sizing: border-box;
     }
 
     button {
-      margin-top: 10px;
-      padding: 10px 20px;
+      padding: 12px 18px;
+      margin-top: 15px;
       background-color: #007acc;
       color: white;
       border: none;
       border-radius: 6px;
       cursor: pointer;
       font-size: 16px;
-      transition: background-color 0.3s;
     }
 
     button:hover {
       background-color: #005fa3;
-    }
-
-    #themeToggle {
-      background-color: #444;
-      font-size: 14px;
-      padding: 8px 15px;
     }
 
     #aiResponse {
@@ -88,9 +76,7 @@
     iframe {
       width: 100%;
       height: 350px;
-      border: 0;
-      border-radius: 8px;
-      margin-top: 15px;
+      border-radius: 10px;
     }
 
     .emergency {
@@ -100,278 +86,204 @@
 
     #sosBtn {
       background-color: red;
-      font-size: 18px;
-      padding: 12px 25px;
     }
 
     #sosBtn:hover {
       background-color: darkred;
     }
 
-    footer {
-      text-align: center;
-      padding: 15px;
-      background-color: #ddd;
-      font-size: 0.9em;
-      border-top: 3px solid #007acc;
-      transition: background-color 0.3s, color 0.3s;
-    }
-
     /* Dark Theme */
     body.dark {
       background-color: #121212;
-      color: #e0e0e0;
+      color: #eee;
     }
-
     body.dark section {
       background-color: #1e1e1e;
-      color: #e0e0e0;
+      color: #fff;
     }
-
-    body.dark footer {
-      background-color: #222;
-      color: #ccc;
-    }
-
     body.dark #aiResponse {
       background-color: #333;
-      border-left: 4px solid #00bcd4;
+      border-left-color: #00bcd4;
     }
-
     body.dark header {
       background-color: #222;
-      border-bottom: 5px solid #00bcd4;
+      border-bottom-color: #00bcd4;
     }
-
     body.dark button {
       background-color: #00bcd4;
     }
-
     body.dark button:hover {
       background-color: #0097a7;
     }
 
-    .voice-btn {
-      margin-left: 10px;
-      background-color: #28a745;
-    }
-
-    .voice-btn:hover {
-      background-color: #1e7e34;
+    /* Extra Mobile Responsiveness */
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+      }
+      button, input, textarea, select {
+        font-size: 14px;
+      }
     }
   </style>
 </head>
-<body>  
 
-  <header>  
-    <div>
-      <h1>🌍 Virtual Health Assistant</h1>  
-      <p>Reliable medical guidance for refugees and displaced communities.</p>  
-    </div>
-    <button id="themeToggle">🌗 Change Theme</button>
-  </header>    
 
-  <main>  
+<body>
 
-    <!-- User Profile -->
-    <section class="user-profile">
-      <h2>👤 User Profile</h2>
-      <form id="profileForm">
-        <input type="number" id="age" placeholder="Age" required>
-        <select id="gender" required>
-          <option value="">Select Gender</option>
-          <option value="Male">Male</option>
-          <option value="Female">Female</option>
-          <option value="Other">Other</option>
-        </select>
-        <input type="text" id="allergies" placeholder="Allergies (comma separated)">
-        <button type="submit">Save Profile</button>
-      </form>
-      <div id="profileDisplay"><em>No profile saved yet.</em></div>
-    </section>
+<header>
+  <div>
+    <h1>🌍 Virtual Health Assistant</h1>
+    <p>Reliable medical guidance for refugees and displaced communities.</p>
+  </div>
 
-    <!-- Symptom Checker -->
-    <section class="symptom-checker">  
-      <h2>🩺 Symptom Checker</h2>  
-      <form id="symptomForm">  
-        <textarea id="symptoms" rows="4" placeholder="E.g., fever, cough, chest pain..."></textarea><br>  
-        <button type="submit">Submit</button>
-        <button type="button" id="voiceBtn" class="voice-btn">🎙 Speak</button>
-      </form>  
-      <div id="aiResponse"></div>  
-    </section>  
+  <button id="themeToggle">🌗 Theme</button>
+</header>
 
-    <!-- Nearby Services -->
-    <section class="nearby-services">  
-      <h2>🏥 Nearby Doctors / Hospitals</h2>  
-      <iframe id="mapFrame" 
-        src="https://www.google.com/maps?q=hospitals+near+me&output=embed" 
-        allowfullscreen="" loading="lazy"></iframe>
-    </section>
+<main>
 
-    <!-- Emergency SOS -->
-    <section class="emergency">
-      <h2>🚨 Emergency Help</h2>
-      <button id="sosBtn">SOS – Get Help Now</button>
-    </section>
+<!-- USER PROFILE -->
+<section>
+  <h2>👤 User Profile</h2>
 
-  </main>    
+  <form id="profileForm">
+    <input type="number" id="age" placeholder="Age" required>
+    <select id="gender" required>
+      <option value="">Select Gender</option>
+      <option>Male</option>
+      <option>Female</option>
+      <option>Other</option>
+    </select>
+    <input type="text" id="allergies" placeholder="Allergies (comma separated)">
+    <button type="submit">Save Profile</button>
+  </form>
 
-  <footer>  
-    <p>🌱 Aligned with UN SDG 3 (Good Health), 10 (Reduced Inequalities), and 16 (Peace & Justice)</p>  
-  </footer>    
+  <div id="profileDisplay"><em>No profile saved yet.</em></div>
+</section>
 
-  <script>
-    // =================== Profile ===================
-    const profileForm = document.getElementById("profileForm");
-    const profileDisplay = document.getElementById("profileDisplay");
+<!-- SYMPTOM CHECKER -->
+<section>
+  <h2>🩺 Symptom Checker</h2>
 
-    let userProfile = {}; // always fresh, no saving between sessions
+  <form id="symptomForm">
+    <textarea id="symptoms" rows="4" placeholder="E.g., fever, cough, chest pain..."></textarea>
+    <button type="submit">Submit</button>
+  </form>
 
-    function renderProfile() {
-      if (userProfile.age) {
-        profileDisplay.innerHTML = `
-          <strong>Saved Profile:</strong><br>
-          Age: ${userProfile.age}<br>
-          Gender: ${userProfile.gender}<br>
-          Allergies: ${userProfile.allergies || "None"}
-        `;
-      } else {
-        profileDisplay.innerHTML = "<em>No profile saved yet.</em>";
-      }
-    }
+  <div id="aiResponse"></div>
+</section>
 
-    profileForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const age = document.getElementById("age").value;
-      const gender = document.getElementById("gender").value;
-      const allergies = document.getElementById("allergies").value;
+<!-- MAP -->
+<section>
+  <h2>🏥 Nearby Doctors / Hospitals</h2>
+  <iframe id="mapFrame" src="https://www.google.com/maps?q=hospitals+near+me&output=embed"></iframe>
+</section>
 
-      userProfile = { age, gender, allergies };
-      renderProfile();
-      profileForm.reset();
+<!-- SOS -->
+<section class="emergency">
+  <h2>🚨 Emergency Help</h2>
+  <button id="sosBtn">SOS – Get Help Now</button>
+</section>
+
+</main>
+
+
+<footer style="text-align:center;padding:10px;background:#ddd;">
+  🌱 UN SDG 3 | 10 | 16
+</footer>
+
+<script>
+
+// PROFILE
+let userProfile = {};
+const profileDisplay = document.getElementById("profileDisplay");
+
+document.getElementById("profileForm").addEventListener("submit", e => {
+  e.preventDefault();
+  userProfile = {
+    age: document.getElementById("age").value,
+    gender: document.getElementById("gender").value,
+    allergies: document.getElementById("allergies").value
+  };
+
+  profileDisplay.innerHTML = `
+    <strong>Saved Profile:</strong><br>
+    Age: ${userProfile.age} <br>
+    Gender: ${userProfile.gender} <br>
+    Allergies: ${userProfile.allergies || "None"}
+  `;
+});
+
+// SYMPTOM CHECKER
+document.getElementById("symptomForm").addEventListener("submit", e => {
+  e.preventDefault();
+
+  const symptoms = document.getElementById("symptoms").value.toLowerCase().trim();
+  const responseBox = document.getElementById("aiResponse");
+  const mapFrame = document.getElementById("mapFrame");
+
+  if (!symptoms) {
+    responseBox.innerHTML = "<strong>Please enter symptoms.</strong>";
+    return;
+  }
+
+  let advice = "";
+  let doctor = "";
+  let mapQuery = "hospitals near me";
+
+  if (symptoms.includes("fever") || symptoms.includes("cough")) {
+    advice = "Possible viral infection. Stay hydrated and rest.";
+    doctor = "General Physician";
+    mapQuery = "general physician near me";
+
+  } else if (symptoms.includes("chest pain")) {
+    advice = "Possible heart/lung issue. If severe, seek emergency help.";
+    doctor = "Cardiologist";
+    mapQuery = "cardiologist near me";
+
+  } else if (symptoms.includes("vomit") || symptoms.includes("diarrhea")) {
+    advice = "Likely stomach issue. Drink oral rehydration fluids.";
+    doctor = "Gastroenterologist";
+    mapQuery = "gastroenterologist near me";
+
+  } else {
+    advice = "Your symptoms need a doctor's evaluation.";
+    doctor = "General Physician";
+  }
+
+  if (userProfile.age) {
+    advice += `<br><br><em>Note: Tailored for age ${userProfile.age}, gender ${userProfile.gender}.</em>`;
+  }
+
+  responseBox.innerHTML = `
+    <strong>Suggestions:</strong> ${advice}<br><br>
+    <strong>Recommended Doctor:</strong> ${doctor}
+  `;
+
+  mapFrame.src = `https://www.google.com/maps?q=${encodeURIComponent(mapQuery)}&output=embed`;
+});
+
+// SOS BUTTON
+document.getElementById("sosBtn").addEventListener("click", () => {
+  if (confirm("Call emergency services?")) {
+    window.location.href = "tel:112";
+  } else {
+    navigator.geolocation.getCurrentPosition(pos => {
+      const lat = pos.coords.latitude;
+      const lon = pos.coords.longitude;
+
+      const message = `🚨 I need help! My location: https://maps.google.com/?q=${lat},${lon}`;
+      window.open(`https://wa.me/?text=${encodeURIComponent(message)}`);
     });
+  }
+});
 
-    renderProfile();
+// THEME TOGGLE
+document.getElementById("themeToggle").addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+});
 
-    // =================== Symptom Checker ===================
-    document.getElementById('symptomForm').addEventListener('submit', function(event) {
-      event.preventDefault();
+</script>
 
-      const symptoms = document.getElementById('symptoms').value.toLowerCase().trim();
-      const responseBox = document.getElementById('aiResponse');
-      const mapFrame = document.getElementById('mapFrame');
-
-      let advice = "";
-      let doctor = "";
-      let mapQuery = "hospitals near me"; // default
-
-      if (!symptoms) {
-        responseBox.innerHTML = "<strong>Please enter your symptoms.</strong>";
-        return;
-      }
-
-      if (symptoms.includes("fever") || symptoms.includes("cough") || symptoms.includes("cold")) {
-        advice = "You might have a viral infection. Please rest, stay hydrated, and monitor your temperature.";
-        doctor = "General Physician";
-        mapQuery = "general physician near me";
-      } 
-      else if (symptoms.includes("chest pain") || symptoms.includes("breath") || symptoms.includes("heart")) {
-        advice = "Possible heart or lung issue. 🚨 Seek immediate care if severe.";
-        doctor = "Cardiologist / Pulmonologist";
-        mapQuery = "cardiologist near me";
-      } 
-      else if (symptoms.includes("stomach") || symptoms.includes("vomit") || symptoms.includes("diarrhea")) {
-        advice = "Likely a stomach-related issue. Stay hydrated and eat light food.";
-        doctor = "Gastroenterologist";
-        mapQuery = "gastroenterologist near me";
-      }
-      else if (symptoms.includes("headache") || symptoms.includes("dizzy") || symptoms.includes("migraine")) {
-        advice = "May be a neurological issue. Rest in a dark, quiet room.";
-        doctor = "Neurologist";
-        mapQuery = "neurologist near me";
-      }
-      else if (symptoms.includes("skin") || symptoms.includes("rash") || symptoms.includes("allergy")) {
-        advice = "Looks like a skin-related condition. Avoid allergens and keep the area clean.";
-        doctor = "Dermatologist";
-        mapQuery = "dermatologist near me";
-      }
-      else {
-        advice = "Your symptoms are not clearly matched. Please consult a doctor.";
-        doctor = "General Physician";
-        mapQuery = "clinics near me";
-      }
-
-      // Personalize with profile data if available
-      if (userProfile.age) {
-        advice += <br><br><em>Note: Advice is tailored considering your age (${userProfile.age}), gender (${userProfile.gender}), and allergies (${userProfile.allergies || "None"}).</em>;
-      }
-
-      responseBox.innerHTML = `
-        <strong>Suggestions:</strong> ${advice}<br><br>
-        <strong>Suggested Doctor:</strong> ${doctor}
-      `;
-
-      mapFrame.src = https://www.google.com/maps?q=${encodeURIComponent(mapQuery)}&output=embed;
-    });
-
-    // =================== Voice Input ===================
-    const voiceBtn = document.getElementById("voiceBtn");
-    const symptomsInput = document.getElementById("symptoms");
-
-    if ('webkitSpeechRecognition' in window) {
-      const recognition = new webkitSpeechRecognition();
-      recognition.lang = "en-US";
-      recognition.continuous = false;
-      recognition.interimResults = false;
-
-      voiceBtn.addEventListener("click", () => {
-        recognition.start();
-      });
-
-      recognition.onresult = (event) => {
-        const transcript = event.results[0][0].transcript;
-        symptomsInput.value += (symptomsInput.value ? " " : "") + transcript;
-      };
-
-      recognition.onerror = (event) => {
-        alert("Voice recognition error: " + event.error);
-      };
-    } else {
-      voiceBtn.disabled = true;
-      voiceBtn.innerText = "🎙 Not Supported";
-    }
-
-    // =================== Emergency SOS ===================
-    document.getElementById("sosBtn").addEventListener("click", () => {
-      if (confirm("📞 Do you want to call Emergency Services?")) {
-        window.location.href = "tel:112"; // Change number if needed
-      } else {
-        navigator.geolocation.getCurrentPosition((pos) => {
-          const lat = pos.coords.latitude;
-          const lon = pos.coords.longitude;
-          const message = 🚨 I need help! My location: https://maps.google.com/?q=${lat},${lon};
-          window.open(https://wa.me/?text=${encodeURIComponent(message)}, "_blank");
-        });
-      }
-    });
-
-    // =================== Theme Toggle ===================
-    const themeToggle = document.getElementById("themeToggle");
-    const body = document.body;
-
-    if (localStorage.getItem("theme") === "dark") {
-      body.classList.add("dark");
-    }
-
-    themeToggle.addEventListener("click", () => {
-      body.classList.toggle("dark");
-      if (body.classList.contains("dark")) {
-        localStorage.setItem("theme", "dark");
-      } else {
-        localStorage.setItem("theme", "light");
-      }
-    });
-  </script>
-</body>  
+</body>
 </html>

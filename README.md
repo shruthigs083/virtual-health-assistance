@@ -4,7 +4,7 @@
 
 The project combines AI-driven analysis, voice interaction, geolocation, and emergency support features to make healthcare information more accessible and help users respond to potentially urgent situations.
 
-🏆 **Achievement:** Secured **3rd Place at Hackafestia**, competing among 150 teams.
+🏆 **Achievement:** Secured **3rd Place at Hackaphasia**, competing among 150 teams.
 
 ## ✨ Features
 

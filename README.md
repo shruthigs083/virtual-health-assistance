@@ -22,7 +22,7 @@ The application is intended for informational and educational purposes and does 
 
 The application follows a workflow that connects user input, AI-based processing, and healthcare support services.
 
-![Virtual Health Assistant Architecture](./assets/virtual-health-assistant-flow.png)
+![Virtual Health Assistant Architecture](./assets/health.png)
 
 ### Application Workflow
 

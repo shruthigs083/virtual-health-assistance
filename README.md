@@ -1,135 +1,124 @@
-# 🩺 Virtual Health Assistant — Your Digital Companion for Health and Safety
+# Virtual Health Assistant
 
-**Virtual Health Assistant** is an AI-powered healthcare and safety platform designed to provide preliminary symptom guidance, assess potential health risks, and help users find nearby hospitals and emergency assistance.
+An AI-assisted healthcare and safety platform designed to provide preliminary symptom analysis, health guidance, severity assessment, and access to nearby healthcare facilities.
 
-The project combines AI-driven analysis, voice interaction, geolocation, and emergency support features to make healthcare information more accessible and help users respond to potentially urgent situations.
+## Project Overview
 
-🏆 **Achievement:** Secured **3rd Place at Hackaphasia**, competing among 150 teams.
+Virtual Health Assistant is a healthcare support application that combines symptom analysis, voice interaction, location-based services, and emergency assistance. It aims to improve access to preliminary healthcare information and help users identify appropriate next steps based on their reported symptoms.
 
-## ✨ Features
+The application is intended for informational and educational purposes and does not replace professional medical consultation.
 
-- **🩺 Symptom Analysis:** Analyze user-reported symptoms to provide preliminary health guidance.
-- **🤖 Severity Prediction:** Estimate potential symptom severity to support better-informed next steps.
-- **💬 Personalized Health Guidance:** Provide guidance based on the information supplied by users.
-- **🎙️ Voice Interaction:** Enable voice-based interaction for a more accessible user experience.
-- **📍 Location Detection:** Use location services to identify nearby healthcare facilities.
-- **🏥 Nearby Hospital Recommendations:** Help users locate hospitals when healthcare assistance is needed.
-- **🚨 Emergency Assistance:** Support access to emergency resources and alerts.
+## Key Features
 
-## 🧰 Tech Stack
+- **Symptom Analysis:** Processes user-reported symptoms to provide preliminary health guidance.
+- **Severity Prediction:** Estimates potential symptom severity to support informed decision-making.
+- **Personalized Guidance:** Provides health-related suggestions based on submitted information.
+- **Voice Interaction:** Supports voice-based input to improve accessibility.
+- **Location Detection:** Uses geolocation services to identify the user's location.
+- **Nearby Hospital Discovery:** Helps users locate nearby healthcare facilities.
+- **Emergency Assistance:** Provides access to relevant emergency support resources.
 
-| Technology | Purpose |
+## System Architecture
+
+The application follows a workflow that connects user input, AI-based processing, and healthcare support services.
+
+![Virtual Health Assistant Architecture](./assets/virtual-health-assistant-flow.png)
+
+### Application Workflow
+
+1. The user provides symptoms or health-related information through the web interface.
+2. The application processes the submitted information.
+3. The AI component performs symptom analysis and estimates potential severity.
+4. Location services identify relevant nearby healthcare facilities.
+5. The application presents preliminary guidance and available support information.
+
+## Technology Stack
+
+The project incorporates the following technology categories:
+
+| Component | Purpose |
 |---|---|
+| Python | Application logic and processing, if used |
 | AI / Machine Learning | Symptom analysis and severity prediction |
-| Python | Application logic, if used in the implementation |
 | Voice Processing | Voice-based user interaction |
-| Geolocation APIs | Location detection and nearby facility discovery |
-| REST APIs | Integration with external services, if applicable |
+| Geolocation APIs | Location detection |
+| REST APIs | Communication with external services, where applicable |
+| HTML, CSS, JavaScript | Web interface, as applicable |
 
-*Update this section to reflect the exact languages, frameworks, models, and APIs used in your project.*
+**Note:** Exact frameworks, machine learning libraries, models, and API providers should be documented according to the actual implementation.
 
-## 🏗️ Project Structure
+## Repository Structure
 
 ```text
 Virtual-Health-Assistant/
-├── app.py
-├── requirements.txt
+│
+├── index.html
 ├── README.md
-├── assets/
-└── ...
+└── assets/
+    └── virtual-health-assistant-flow.png
 ```
 
-*This is an illustrative structure. Replace it with your actual project files and folders.*
+Additional application files, models, configuration files, and dependencies should be included in this structure as the implementation evolves.
 
-## ⚙️ Getting Started
+## Installation and Execution
 
 ### Prerequisites
 
-- Python, if required by your implementation
 - Git
-- A code editor such as Visual Studio Code
-- Required API credentials for any external services used
+- A modern web browser
+- Visual Studio Code or another code editor
+- Python and required packages, if the backend implementation uses Python
+- API credentials, if external services require authentication
 
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/YOUR-USERNAME/Virtual-Health-Assistant.git
-cd Virtual-Health-Assistant
-```
-
-### 2. Create a virtual environment
+### Clone the Repository
 
 ```bash
-python -m venv venv
+git clone https://github.com/shruthigs083/virtual-health-assistance.git
 ```
 
-Activate it on Windows:
+Navigate to the project directory:
 
 ```bash
-venv\Scripts\activate
+cd virtual-health-assistance
 ```
 
-On macOS/Linux:
+### Run the Application
 
-```bash
-source venv/bin/activate
-```
+If the current implementation is a standalone HTML application, open `index.html` in a web browser.
 
-### 3. Install dependencies
+If a Python backend or framework is included, install the dependencies listed in the project's requirements file and use the appropriate application startup command.
 
-```bash
-pip install -r requirements.txt
-```
+## Project Achievement
 
-### 4. Run the application
+**Third Place – Hackaphasia**
 
-Use the appropriate command for your framework and entry-point file. For example, if your application uses Streamlit:
+The Virtual Health Assistant project secured third place among 150 participating teams.
 
-```bash
-streamlit run app.py
-```
+## Potential Future Improvements
 
-**Note:** Update these instructions to match the actual framework and startup command used in your project.
+- Improve symptom classification and prediction accuracy.
+- Expand multilingual voice interaction.
+- Integrate verified healthcare facility information.
+- Improve location-based emergency assistance.
+- Strengthen data privacy and application security.
+- Enhance accessibility and mobile responsiveness.
 
-## 🔍 How It Works
+## Limitations and Disclaimer
 
-1. Users provide their symptoms or health-related information.
-2. The system analyzes the provided information to generate preliminary guidance.
-3. Severity prediction helps communicate potential levels of concern.
-4. Voice interaction supports a more convenient user experience.
-5. Location services help users discover nearby hospitals and emergency resources.
+Virtual Health Assistant provides preliminary health-related information only. Its predictions and recommendations are not medical diagnoses and must not be used as a substitute for professional medical advice or treatment.
 
-## 🚀 Future Enhancements
+In an emergency, users should contact local emergency services or seek immediate medical assistance.
 
-- Improved symptom analysis and risk assessment.
-- Multilingual voice interaction.
-- More comprehensive healthcare facility information.
-- Enhanced accessibility for users with different needs.
-- Secure user profiles and health-information management.
-- Improved integration with verified healthcare resources.
+## Contributors
 
-## 🏆 Achievement
+**Shruthi G S**
 
-**3rd Place — Hackafestia**
+GitHub: [@shruthigs083](https://github.com/shruthigs083)
 
-Recognized among **150 participating teams** for the Virtual Health Assistant project.
+## License
 
-## 👩‍💻 Team & Contributions
-
-Developed as a team project focused on using AI and technology to improve access to healthcare guidance and safety support.
-
-**Contributors:**
-- Add your name — [GitHub Profile](https://github.com/YOUR-USERNAME)
-- Add teammate names and their GitHub profiles.
-
-## ⚕️ Disclaimer
-
-This application is intended to provide preliminary health information and support. It is **not a substitute for professional medical diagnosis, treatment, or emergency services**. Users experiencing a medical emergency should contact their local emergency services or seek immediate professional care.
-
-## 📄 License
-
-Add an appropriate license after confirming that your team has permission to distribute the project's source code.
+A license should be added after confirming the project's distribution and usage permissions.
 
 ---
 
-**Built with 💙 to make healthcare guidance and safety support more accessible.**
+*Developed as a technology project exploring the application of artificial intelligence and location-based services in healthcare accessibility.*
